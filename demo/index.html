@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>numeraX test</title>
+    <script src="./jsep.min.js"></script>
+    <script src="./../bin/numeraX.js"></script>
+    <style>
+        html {
+            background-color: #ccc;
+        }
+        body {
+            width: 500px;
+            margin: auto;
+            font-family: Courier New, Courier, monospace;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 100px;
+        }
+        body > * {
+            width: 100%;
+            margin: 20px 0 20px 0;
+        }
+        input {
+            border: none;
+            border-bottom: 2px cornflowerblue solid;
+            font-size: 1rem;
+            outline: none;
+            padding-bottom: 0.5rem;
+        }
+        #display {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body onload="render( )">
+    <input type="text" id="input" onkeyup="render( )" value="4 ^ 3 / 2 = 2">
+    <div id="display"></div>
+    <script>
+        function render ( ) {
+            let text = document.getElementById('input').value;
+            let display = document.getElementById('display');
+            display.innerText = numeraX.compile( text );
+        }
+    </script>
+</body>
+</html>
