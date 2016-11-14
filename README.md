@@ -1,12 +1,13 @@
 # nemeraX
-A compiler that compiles basic math notation to renderable TeX code. Just load up the file in your browser:
-```
-<script src="numeraX.js" ></script>
+A compiler that compiles basic math notation to renderable TeX code. Just load up the file in your browser. (You first need to have [JSEP](http://jsep.from.so/))
+```HTML
+<script src="/path/to/jsep.js"></script>
+<script src="/path/to/numeraX.js" ></script>
 ```
 
 And then it's just very simple to use it:
 
-```
+```JavaScript
 // compiles to: "\frac{2}{3} + 4"
 const awesomeTeX = numeraX.compile("2 / 3 + 4");
 ```
