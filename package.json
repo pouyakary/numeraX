@@ -4,7 +4,8 @@
   "description": "Simple math notation to TeX math notation compiler.",
   "main": "bin/numerax.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "npm install -g typescript uglifyjs",
+    "build": "tsc; uglifyjs bin/numerax.js -o bin/numerax.js -c -m"
   },
   "author": "Kary Foundation",
   "license": "MPL-2.0"
