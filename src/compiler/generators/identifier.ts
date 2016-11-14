@@ -15,7 +15,18 @@ namespace numeraX.compiler.generators {
     //
 
         export function compileIdentifierNode ( node: jsep.interfaces.identiferNode ) {
-            return `\\text{${ node.name }}`
+            if ( symbols[ node.name ] === undefined )
+                return `\\text{${ node.name }}`
+            else
+                return symbols[ node.name ]
+        }
+
+    //
+    // ─── SYMBOLS ────────────────────────────────────────────────────────────────────
+    //
+
+        const symbols = {
+            pi: '\\pi'
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
