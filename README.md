@@ -1,4 +1,4 @@
-# nemeraX
+# numeraX
 A compiler that compiles basic math notation to renderable TeX code. Just load up the file in your browser. (You first need to have [JSEP](http://jsep.from.so/))
 ```HTML
 <script src="/path/to/jsep.js"></script>
