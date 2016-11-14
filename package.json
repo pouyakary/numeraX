@@ -1,0 +1,11 @@
+{
+  "name": "numerax",
+  "version": "0.0.1",
+  "description": "Simple math notation to TeX math notation compiler.",
+  "main": "bin/numerax.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kary Foundation",
+  "license": "MPL-2.0"
+}
