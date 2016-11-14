@@ -5,10 +5,9 @@
     <title>numeraX test</title>
     <script src="./jsep.min.js"></script>
     <script src="./../bin/numeraX.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
     <style>
-        html {
-            background-color: #ccc;
-        }
         body {
             width: 500px;
             margin: auto;
@@ -32,16 +31,28 @@
         #display {
             font-size: 1.3rem;
         }
+        img {
+            margin-top: 50px;
+            margin-bottom: 75px;
+        }
     </style>
 </head>
 <body onload="render( )">
+    <h1>numeraX</h1>
     <input type="text" id="input" onkeyup="render( )" value="4 ^ 3 / 2 = 2">
     <div id="display"></div>
+    <div id="katex-display"></div>
+
+    <a href="http://www.karyfoundation.org/">
+    <img src="http://www.karyfoundation.org/foundation/logo/github-full-horse.png" width="180"/>
     <script>
         function render ( ) {
-            let text = document.getElementById('input').value;
-            let display = document.getElementById('display');
-            display.innerText = numeraX.compile( text );
+            var text = document.getElementById('input').value;
+            var display = document.getElementById('display');
+            var katexDisplay = document.getElementById('katex-display');
+            var compiledTeX = numeraX.compile( text );
+            display.innerText = compiledTeX;
+            katexDisplay.innerHTML = katex.renderToString( compiledTeX, { displayMode: true } );
         }
     </script>
 </body>
