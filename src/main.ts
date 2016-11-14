@@ -20,7 +20,7 @@ namespace numeraX {
 
             try {
                 // getting the ast
-                let ast = jsep( code );
+                let ast = jsep( code.replace( /=(?!=)/g, '==' ) );
 
                 // compiling the ast into TeX
                 return compiler.generate( ast );

@@ -16,8 +16,6 @@ namespace numeraX.parser {
 
         export function setupJSEP ( ) {
             jsep.addBinaryOp( "^" , 10 );
-            jsep.addBinaryOp( "=" , 10 );
-            jsep.removeBinaryOp( "==" );
         }
 
     // ────────────────────────────────────────────────────────────────────────────────

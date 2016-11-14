@@ -22,13 +22,16 @@ namespace numeraX.compiler.generators {
 
             switch ( node.operator ) {
                 case '/':
-                    return `\\frac{${ left }}{${ right }}`
+                    return `\\frac{ ${ left } }{ ${ right } }`
 
                 case '*':
                     return `${ left } \\times ${ right }`
 
                 case '^':
-                    return `{${ left }}^{${ right }}`
+                    return `{ ${ left } }^{ ${ right } }`
+
+                case '==':
+                    return `{ ${ left } } = { ${ right } }`
 
                 default:
                     return `${ left } ${ node.operator } ${ right }`
