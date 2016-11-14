@@ -17,21 +17,21 @@ namespace numeraX.compiler.generators {
 
         export function compileBinaryExpressionNode ( node: jsep.interfaces.binaryExpressionNode ) {
 
-            let left = compiler.generate( node.left );
-            let right = compiler.generate( node.right );
+            let left = compiler.generate( node.left )
+            let right = compiler.generate( node.right )
 
             switch ( node.operator ) {
                 case '/':
-                    return `\\frac{${ left }}{${ right }}`;
+                    return `\\frac{${ left }}{${ right }}`
 
                 case '*':
-                    return `${ left } \\times ${ right }`;
+                    return `${ left } \\times ${ right }`
 
                 case '^':
                     return `{${ left }}^{${ right }}`
 
                 default:
-                    return `${ left } ${ node.operator } ${ right }`;
+                    return `${ left } ${ node.operator } ${ right }`
             }
         }
 

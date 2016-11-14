@@ -15,7 +15,7 @@ namespace numeraX.compiler.generators {
     //
 
         export function compileIdentifierNode ( node: jsep.interfaces.identiferNode ) {
-            return `\\text{${ node.name }}`;
+            return `\\text{${ node.name }}`
         }
 
     // ────────────────────────────────────────────────────────────────────────────────

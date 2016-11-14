@@ -15,7 +15,7 @@ namespace numeraX.compiler.generators {
     //
 
         export function compileLiteralNode ( node: jsep.interfaces.literalNode ) {
-            return node.value;
+            return node.value
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
