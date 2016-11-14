@@ -15,7 +15,10 @@ namespace numeraX.compiler.generators {
     //
 
         export function compileLiteralNode ( node: jsep.interfaces.literalNode ) {
-            return node.value
+            if ( /^\d+(?:\.\d+)?$/.test( node.raw ) )
+                return node.value
+            else
+                return `\\text{${ node.value }}`
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
