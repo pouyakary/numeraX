@@ -23,10 +23,15 @@
         }
         input {
             border: none;
-            border-bottom: 2px cornflowerblue solid;
+            border-bottom: 2px #ccc solid;
             font-size: 1rem;
             outline: none;
             padding-bottom: 0.5rem;
+            transition-duration: 1s;
+        }
+        input:focus {
+            transition-duration: 1s;
+            border-bottom-color: cornflowerblue;
         }
         #display {
             font-size: 1.3rem;
@@ -51,7 +56,7 @@
     <div id="katex-display"></div>
 
     <a href="http://www.karyfoundation.org/">
-    <img src="github-full-horse.png" width="180"/>
+    <img src="github-full-horse.png" width="200"/>
     <script>
         function render ( ) {
             var text = document.getElementById('input').value;
