@@ -27,6 +27,10 @@ namespace numeraX.compiler.generators {
                 case 'lim':
                     return safeGen( 3, node, stdlib.limit )
 
+                case 'integral':
+                case 'int':
+                    return safeGen( 3, node, stdlib.integral )
+
                 default:
                     return generateUnknownFunction( node )
             }
@@ -37,21 +41,33 @@ namespace numeraX.compiler.generators {
     //
 
         function generateUnknownFunction ( node: jsep.interfaces.callExpressionNode ) {
-            return `{${ node.callee.name }}(${ node.arguments.map( n => compiler.generate( n ) ).join(', ') })`
+            return `{${ node.callee.name }}(${
+                node.arguments.map(
+                    n => compiler.generate( n )
+                ).join(', ') }
+            )`
         }
 
     //
     // ─── GENERATOR WITH ARG NUMBERS ─────────────────────────────────────────────────
     //
 
-        function safeGen ( argc: number,
-                          node: jsep.interfaces.callExpressionNode,
-                          func: ( args: jsep.interfaces.baseNode[ ] ) => string ) {
-
-            if ( func.arguments.length === argc )
+        function safeGen ( argc: number, 
+                           node: jsep.interfaces.callExpressionNode,
+                           func: ( args: jsep.interfaces.baseNode[ ] ) => string ) {
+            if ( node.arguments.length === argc )
                 return func( node.arguments )
             else
                 return generateUnknownFunction( node )
+        }
+
+    //
+    // ─── TREE PART FUNCTIONS ────────────────────────────────────────────────────────
+    //
+
+        function generate3PartFunctions ( name: string,
+                                          args: jsep.interfaces.baseNode[ ] ) {
+            return `\\${ name }_{${ compiler.generate( args[ 0 ] ) }}^{${ compiler.generate( args[ 1 ]) }}{${ compiler.generate( args[ 2 ] ) }}`
         }
 
     //
@@ -65,10 +81,15 @@ namespace numeraX.compiler.generators {
             //
 
                 export function sum ( args: jsep.interfaces.baseNode[ ] ) {
-                    if ( args.length === 3 )
-                        return `\\sum_{${ compiler.generate( args[ 0 ] ) }}^{${ compiler.generate( args[ 1 ] ) }}{${ compiler.generate( args[ 2 ] ) }}`
-                    else
-                        return ''
+                    return generate3PartFunctions( 'sum', args )
+                }
+
+            //
+            // ─── INTEGRAL ────────────────────────────────────────────────────
+            //
+
+                export function integral ( args: jsep.interfaces.baseNode[ ] ) {
+                    return generate3PartFunctions( 'int', args )
                 }
 
             //
@@ -76,10 +97,7 @@ namespace numeraX.compiler.generators {
             //
 
                 export function sqrt ( args: jsep.interfaces.baseNode[ ] ) {
-                    if ( args.length === 1 )
-                        return `\\sqrt{${ compiler.generate( args[ 0 ] ) }}`
-                    else
-                        return ''
+                    return `\\sqrt{${ compiler.generate( args[ 0 ] ) }}`
                 }
 
             //
@@ -87,10 +105,7 @@ namespace numeraX.compiler.generators {
             //
 
                 export function limit ( args: jsep.interfaces.baseNode[ ] ) {
-                    if ( args.length === 3 )
-                        return `\\lim_{${ compiler.generate( args[ 0 ] ) } \\to ${ compiler.generate( args[ 1 ]) }}{${ compiler.generate( args[ 2 ] ) }}`
-                    else
-                        return ''
+                    return `\\lim_{${ compiler.generate( args[ 0 ] ) } \\to ${ compiler.generate( args[ 1 ]) }}{${ compiler.generate( args[ 2 ] ) }}`
                 }
 
             // ─────────────────────────────────────────────────────────────────
