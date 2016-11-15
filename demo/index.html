@@ -11,11 +11,11 @@
         body {
             width: 500px;
             margin: auto;
-            font-family: Courier New, Courier, monospace;
+            font-family: 'Courier New', Courier, monospace;
             background-color: white;
             border-radius: 10px;
             padding: 30px;
-            margin-top: 50px;
+            margin-top: 20px;
         }
         body > * {
             width: 100%;
@@ -27,31 +27,37 @@
             font-size: 1rem;
             outline: none;
             padding-bottom: 0.5rem;
-            transition-duration: 1s;
+            transition-duration: 0.4s;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #424242;
         }
         input:focus {
-            transition-duration: 1s;
-            border-bottom-color: cornflowerblue;
+            transition-duration: 0.3s;
+            border-bottom-color: #C18000;
         }
         #display {
-            font-size: 1.3rem;
+            font-size: 1rem;
         }
         #katex-display {
             margin-top: 40px;
             padding: 20px;
             width: calc( 100% - 40px );
-            background-color: #f4f4f4;
+            border: 2px #ccc solid;
             border-radius: 5px;
         }
         img {
             margin-top: 50px;
             margin-bottom: 75px;
         }
+        .katex {
+            font-size: 1.6em !important;
+        }
     </style>
 </head>
 <body onload="render( )">
     <h1>numeraX</h1>
-    <input type="text" id="input" onkeyup="render( )" value="f( x ) = lim( x, 0, sum( i = 0, x , i * pi^-e  )  ) / 2">
+    <input type="text" id="input" onkeyup="render( )" value="f(x)=lim(x, 0, sum(i = 0, x, i*pi^-e))/2 -> x in B">
     <div id="display"></div>
     <div id="katex-display"></div>
 
