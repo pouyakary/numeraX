@@ -20,6 +20,7 @@ namespace numeraX.parser {
             jsep.addBinaryOp( "<-" , 10 )
             jsep.addBinaryOp( "=>" , 10 )
             jsep.addBinaryOp( "<=" , 10 )
+            jsep.addBinaryOp( "in" , 10 )
         }
 
     // ────────────────────────────────────────────────────────────────────────────────

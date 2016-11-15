@@ -34,16 +34,19 @@ namespace numeraX.compiler.generators {
                     return `{${ left }}={${ right }}`
 
                 case '->':
-                    return `{${ left }}\\rightarrow {${ right }}`
+                    return `{${ left }}\\rightarrow{${ right }}`
 
                 case '=>':
-                    return `{${ left }}\\Rightarrow {${ right }}`
+                    return `{${ left }}\\Rightarrow{${ right }}`
 
                 case '<-':
-                    return `{${ left }}\\leftarrow {${ right }}`
+                    return `{${ left }}\\leftarrow{${ right }}`
 
                 case '<=':
-                    return `{${ left }}\\Leftarrow {${ right }}`
+                    return `{${ left }}\\Leftarrow{${ right }}`
+
+                case 'in':
+                    return `{${ left }}\\in{${ right }}`
 
                 default:
                     return `${ left }${ node.operator }${ right }`
