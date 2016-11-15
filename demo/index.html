@@ -17,30 +17,31 @@
             padding: 30px;
             margin-top: 20px;
         }
-        body > * {
-            width: 100%;
-            margin: 20px 0 20px 0;
-        }
-        input {
-            border: none;
-            border-bottom: 2px #ccc solid;
+        textarea {
+            border: 2px #ccc solid;
             font-size: 1rem;
             outline: none;
-            padding-bottom: 0.5rem;
             transition-duration: 0.4s;
-            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
             color: #424242;
+            resize: none;
+            border-radius: 5px;
         }
-        input:focus {
-            transition-duration: 0.3s;
-            border-bottom-color: #C18000;
-        }
-        #display {
+        .display {
             font-size: 1rem;
+            padding: 25px;
+            width: calc( 100% - 50px );
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px #ccc solid;
+            font-size: 1rem;
+            transition-duration: 0.3s;
+        }
+        .display:focus {
+            transition-duration: 0.3s;
+            border-color: #40ADFF;
         }
         #katex-display {
-            margin-top: 40px;
+            margin-top: 20px;
             padding: 20px;
             width: calc( 100% - 40px );
             border: 2px #ccc solid;
@@ -57,19 +58,16 @@
 </head>
 <body onload="render( )">
     <h1>numeraX</h1>
-    <input type="text" id="input" onkeyup="render( )" value="f(x)=lim(x, 0, sum(i = 0, x, i*pi^-e))/2 -> x in B">
-    <div id="display"></div>
-    <div id="katex-display"></div>
+    <textarea class="display" id="input" rows="4" onkeyup="render( )">f( x ) = lim( x, 0, int( a, b, i * pi^-e ) ) / sum( i = 0, x, i^3 ) -> x in B</textarea>
+    <div class="display" id="katex-display"></div>
 
     <a href="http://www.karyfoundation.org/">
     <img src="github-full-horse.png" width="200"/>
     <script>
         function render ( ) {
             var text = document.getElementById('input').value;
-            var display = document.getElementById('display');
             var katexDisplay = document.getElementById('katex-display');
             var compiledTeX = numeraX.compile( text );
-            display.innerText = compiledTeX;
             katexDisplay.innerHTML = katex.renderToString( compiledTeX, { displayMode: true } );
         }
     </script>
