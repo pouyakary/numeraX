@@ -27,6 +27,9 @@ namespace numeraX.compiler {
 
                 case 'UnaryExpression':
                     return generators.compileUnaryExpressionNode( <jsep.interfaces.unaryExpressionNode> node )
+
+                case 'CallExpression':
+                    return generators.compileCallExpressionNode( <jsep.interfaces.callExpressionNode> node )
             }
         }
 
