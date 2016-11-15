@@ -18,19 +18,69 @@ namespace numeraX.compiler.generators {
         export function compileCallExpressionNode ( node: jsep.interfaces.callExpressionNode ) {
             switch ( node.callee.name ) {
                 case 'sum':
-                    return generateForSumFunction( node.arguments )
+                    return stdlib.sum( node.arguments )
+
+                case 'sqrt':
+                    return stdlib.sqrt( node.arguments )
+
+                case 'limit':
+                case 'lim':
+                    return stdlib.limit( node.arguments )
+
+                default:
+                    return generateUnknownFunction( node )
             }
         }
 
     //
-    // ─── SUM FUNCTION GENERATOR ─────────────────────────────────────────────────────
+    // ─── UNKNOWN FUNCTION ───────────────────────────────────────────────────────────
     //
 
-        function generateForSumFunction ( args: jsep.interfaces.baseNode[ ] ) {
-            if ( args.length === 3 )
-                return `\\sum_{${ compiler.generate( args[ 0 ] ) }}^{ ${ compiler.generate( args[ 1 ] ) } }{ ${ compiler.generate( args[ 2 ] ) } }`
-            else
-                return ''
+        function generateUnknownFunction ( node: jsep.interfaces.callExpressionNode ) {
+            return `{${ node.callee.name }}(${ node.arguments.map( n => compiler.generate( n ) ).join(', ') })`
+        }
+
+    //
+    // ─── STANDARD LIBRARY ───────────────────────────────────────────────────────────
+    //
+
+        namespace stdlib {
+
+            //
+            // ─── SUM ─────────────────────────────────────────────────────────
+            //
+
+                export function sum ( args: jsep.interfaces.baseNode[ ] ) {
+                    if ( args.length === 3 )
+                        return `\\sum_{${ compiler.generate( args[ 0 ] ) }}^{${ compiler.generate( args[ 1 ] ) }}{${ compiler.generate( args[ 2 ] ) }}`
+                    else
+                        return ''
+                }
+
+            //
+            // ─── SQRT ────────────────────────────────────────────────────────
+            //
+
+                export function sqrt ( args: jsep.interfaces.baseNode[ ] ) {
+                    if ( args.length === 1 )
+                        return `\\sqrt{${ compiler.generate( args[ 0 ] ) }}`
+                    else
+                        return ''
+                }
+
+            //
+            // ─── LIMIT ───────────────────────────────────────────────────────
+            //
+
+                export function limit ( args: jsep.interfaces.baseNode[ ] ) {
+                    if ( args.length === 3 )
+                        return `\\lim_{${ compiler.generate( args[ 0 ] ) } \\to ${ compiler.generate( args[ 1 ]) }}{${ compiler.generate( args[ 2 ] ) }}`
+                    else
+                        return ''
+                }
+
+            // ─────────────────────────────────────────────────────────────────
+
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
