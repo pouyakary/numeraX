@@ -33,6 +33,18 @@ namespace numeraX.compiler.generators {
                 case '==':
                     return `{${ left }}={${ right }}`
 
+                case '->':
+                    return `{${ left }}\\rightarrow {${ right }}`
+
+                case '=>':
+                    return `{${ left }}\\Rightarrow {${ right }}`
+
+                case '<-':
+                    return `{${ left }}\\leftarrow {${ right }}`
+
+                case '<=':
+                    return `{${ left }}\\Leftarrow {${ right }}`
+
                 default:
                     return `${ left }${ node.operator }${ right }`
             }
