@@ -91,6 +91,16 @@
             }
 
         //
+        // ─── UNARY EXPRESSION ────────────────────────────────────────────
+        //
+
+            export interface unaryExpressionNode extends baseNode {
+                operator: string;
+                argument: baseNode;
+                prefix: boolean;
+            }
+
+        //
         // ─── CALL EXPRESSION ─────────────────────────────────────────────
         //
 
