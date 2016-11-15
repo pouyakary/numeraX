@@ -12,34 +12,34 @@
 // ─── MAIN FUNCTIONS ─────────────────────────────────────────────────────────────
 //
 
-    declare function jsep ( code: string ): jsep.interfaces.baseNode;
+    declare function jsep ( code: string ): jsep.interfaces.baseNode
 
     declare module jsep {
         /**
          * Add a custom binary __operator__ with __precedence__
          */
-        export function addBinaryOp ( operator: string, precedence: number ): void;
+        export function addBinaryOp ( operator: string, precedence: number ): void
 
         /**
          * Add a custom unary __operator__
          */
-        export function addUnaryOp ( operator: string ): void;
+        export function addUnaryOp ( operator: string ): void
 
         /**
          * Remove binary __operator__
          */
-        export function removeBinaryOp ( operator: string ): void;
+        export function removeBinaryOp ( operator: string ): void
 
         /**
          * Remove a unary __operator__
          */
-        export function removeUnaryOp ( operator: string ): void;
+        export function removeUnaryOp ( operator: string ): void
 
         /**
          * Restores the previous value of _window.jsep_ and returns a function as a
          * substitution for __jsep( )__
          */
-        export function noConflict ( ): ( code: string ) => jsep.interfaces.baseNode;
+        export function noConflict ( ): ( code: string ) => jsep.interfaces.baseNode
     }
 
 //
@@ -53,7 +53,7 @@
         //
 
             export interface baseNode {
-                type: "Compound" | "Identifier" | "MemberExpression" | "Literal" | "ThisExpression" | "CallExpression" | "UnaryExpression" | "BinaryExpression" | "LogicalExpression" | "ConditionalExpression" | "ArrayExpression" ;
+                type: "Compound" | "Identifier" | "MemberExpression" | "Literal" | "ThisExpression" | "CallExpression" | "UnaryExpression" | "BinaryExpression" | "LogicalExpression" | "ConditionalExpression" | "ArrayExpression"
             }
 
         //
@@ -61,8 +61,8 @@
         //
 
             interface leftRightNode extends baseNode {
-                left: baseNode;
-                right: baseNode;
+                left: baseNode
+                right: baseNode
             }
 
         //
@@ -70,7 +70,7 @@
         //
 
             export interface identiferNode extends baseNode {
-                name: string;
+                name: string
             }
 
         //
@@ -78,8 +78,8 @@
         //
 
             export interface literalNode extends baseNode {
-                value: string;
-                raw: string;
+                value: string
+                raw: string
             }
 
         //
@@ -87,7 +87,7 @@
         //
 
             export interface binaryExpressionNode extends leftRightNode {
-                operator: string;
+                operator: string
             }
 
         //
@@ -95,9 +95,9 @@
         //
 
             export interface unaryExpressionNode extends baseNode {
-                operator: string;
-                argument: baseNode;
-                prefix: boolean;
+                operator: string
+                argument: baseNode
+                prefix: boolean
             }
 
         //
@@ -105,8 +105,8 @@
         //
 
             export interface callExpressionNode extends baseNode {
-                callee: identiferNode;
-                arguments: baseNode[ ];
+                callee: identiferNode
+                arguments: baseNode[ ]
             }
 
         // ─────────────────────────────────────────────────────────────────

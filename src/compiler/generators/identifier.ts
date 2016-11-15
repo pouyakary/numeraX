@@ -26,7 +26,10 @@ namespace numeraX.compiler.generators {
     //
 
         const symbols = {
-            pi: '\\pi'
+            pi: '\\pi',
+            Pi: '\\Pi',
+            alpha: '\\alpha',
+            beta: '\\beta',
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
