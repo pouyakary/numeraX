@@ -18,14 +18,14 @@ namespace numeraX.compiler.generators {
         export function compileCallExpressionNode ( node: jsep.interfaces.callExpressionNode ) {
             switch ( node.callee.name ) {
                 case 'sum':
-                    return handle( 3, node, stdlib.sum )
+                    return safeGen( 3, node, stdlib.sum )
 
                 case 'sqrt':
-                    return handle( 1, node, stdlib.sqrt )
+                    return safeGen( 1, node, stdlib.sqrt )
 
                 case 'limit':
                 case 'lim':
-                    return handle( 3, node, stdlib.limit )
+                    return safeGen( 3, node, stdlib.limit )
 
                 default:
                     return generateUnknownFunction( node )
@@ -44,7 +44,7 @@ namespace numeraX.compiler.generators {
     // ─── GENERATOR WITH ARG NUMBERS ─────────────────────────────────────────────────
     //
 
-        function handle ( argc: number,
+        function safeGen ( argc: number,
                           node: jsep.interfaces.callExpressionNode,
                           func: ( args: jsep.interfaces.baseNode[ ] ) => string ) {
 
