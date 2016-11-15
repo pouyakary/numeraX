@@ -8,26 +8,14 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
 
-namespace numeraX.compiler {
+namespace numeraX.compiler.generators {
 
     //
     // ─── MAIN ───────────────────────────────────────────────────────────────────────
     //
 
-        export function generate ( node: jsep.interfaces.baseNode ): string {
-            switch ( node.type ) {
-                case 'Literal':
-                    return generators.compileLiteralNode( <jsep.interfaces.literalNode> node )
-
-                case 'Identifier':
-                    return generators.compileIdentifierNode( <jsep.interfaces.identiferNode> node )
-
-                case 'BinaryExpression':
-                    return generators.compileBinaryExpressionNode( <jsep.interfaces.binaryExpressionNode> node )
-
-                case 'UnaryExpression':
-                    return generators.compileUnaryExpressionNode( <jsep.interfaces.unaryExpressionNode> node )
-            }
+        export function compileUnaryExpressionNode ( node: jsep.interfaces.unaryExpressionNode ) {
+            return `${ node.operator }{${ compiler.generate( node.argument ) }}`
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
