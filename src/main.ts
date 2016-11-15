@@ -26,7 +26,7 @@ namespace numeraX {
                 return compiler.generate( ast );
 
             } catch ( error ) {
-                return null;
+                return "";
             }
         }
 
