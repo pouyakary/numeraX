@@ -19,8 +19,15 @@ namespace numeraX {
             parser.setupJSEP( );
 
             try {
+                let normalizedCode = code.replace( /=(?!=)|\n/g, match => {
+                    if ( match === '==' )
+                        return '='
+                    if ( match === '\n' )
+                        return ' '   
+                });
+
                 // getting the ast
-                let ast = jsep( code.replace( /=(?!=)/g, '==' ) );
+                let ast = jsep( normalizedCode );
 
                 // compiling the ast into TeX
                 return compiler.generate( ast );
