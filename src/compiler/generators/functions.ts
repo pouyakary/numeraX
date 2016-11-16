@@ -25,7 +25,7 @@ namespace numeraX.compiler.generators {
 
                 case 'limit':
                 case 'lim':
-                    return safeGen( 3, node, stdlib.limit )
+                    return safeGen( 2, node, stdlib.limit )
 
                 case 'integral':
                 case 'int':
@@ -105,7 +105,7 @@ namespace numeraX.compiler.generators {
             //
 
                 export function limit ( args: jsep.interfaces.baseNode[ ] ) {
-                    return `\\lim_{${ compiler.generate( args[ 0 ] ) } \\to ${ compiler.generate( args[ 1 ]) }}{${ compiler.generate( args[ 2 ] ) }}`
+                    return `\\lim_{${ compiler.generate( args[ 0 ] ) }}{${ compiler.generate( args[ 1 ] ) }}`
                 }
 
             // ─────────────────────────────────────────────────────────────────
