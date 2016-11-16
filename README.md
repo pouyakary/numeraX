@@ -1,5 +1,10 @@
 # numeraX
 A compiler that compiles basic math notation to renderable TeX code. Just load up the file in your browser. (You first need to have [JSEP](http://jsep.from.so/))
+
+You first need to download it.
+- You can download it from the releases
+- You can install it via `npm install numerax`
+
 ```HTML
 <script src="/path/to/jsep.js"></script>
 <script src="/path/to/numeraX.js" ></script>
