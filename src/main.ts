@@ -20,8 +20,8 @@ namespace numeraX {
 
             try {
                 let normalizedCode = code.replace( /=(?!=)|\n/g, match => {
-                    if ( match === '==' )
-                        return '='
+                    if ( match === '=' )
+                        return '=='
                     if ( match === '\n' )
                         return ' '   
                 });
