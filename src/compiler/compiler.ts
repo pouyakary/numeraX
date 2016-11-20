@@ -30,6 +30,9 @@ namespace numeraX.compiler {
 
                 case 'CallExpression':
                     return generators.compileCallExpressionNode( <jsep.interfaces.callExpressionNode> node )
+
+                case 'ArrayExpression':
+                    return generators.compileArrayExpressionNode( <jsep.interfaces.arrayExpression> node )
             }
         }
 
