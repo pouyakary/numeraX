@@ -109,6 +109,14 @@
                 arguments: baseNode[ ]
             }
 
+        //
+        // ─── ARRAY NODE ──────────────────────────────────────────────────
+        //
+
+            export interface arrayExpression extends baseNode {
+                elements: baseNode[ ]
+            }
+
         // ─────────────────────────────────────────────────────────────────
 
     }
