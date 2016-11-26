@@ -5,6 +5,7 @@
         "noImplicitAny": false,
         "sourceMap": false,
         "outFile": "bin/numerax.js",
-        "removeComments": true
+        "removeComments": true,
+        "strictNullChecks": true
     }
 }

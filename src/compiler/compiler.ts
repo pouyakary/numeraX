@@ -40,6 +40,7 @@ namespace numeraX.compiler {
                     return generators.compileArrayExpressionNode( 
                         node as jsep.interfaces.arrayExpression )
             }
+            return ''
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
