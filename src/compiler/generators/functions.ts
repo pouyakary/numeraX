@@ -31,6 +31,9 @@ namespace numeraX.compiler.generators {
                 case 'int':
                     return stdlib.integral( node )
 
+                case 'abs':
+                    return safeGen( 1, node, stdlib.abs )
+
                 default:
                     return generateUnknownFunction( node )
             }
@@ -97,7 +100,7 @@ namespace numeraX.compiler.generators {
                         if ( node.arguments[ 1 ].type !== 'Identifier' )
                             return generateUnknownFunction( node )
                         return `\\int ${
-                            compiler.generate( node.arguments[ 1 ] )
+                            compiler.generate( node.arguments[ 0 ] )
                         }\\ ${
                             compiler.generate( node.arguments[ 1 ] )
                         }`
@@ -133,6 +136,14 @@ namespace numeraX.compiler.generators {
 
                 export function limit ( args: jsep.interfaces.baseNode[ ] ) {
                     return `\\lim_{${ compiler.generate( args[ 0 ] ) }}{${ compiler.generate( args[ 1 ] ) }}`
+                }
+
+            //
+            // ─── ABSOLUTE ────────────────────────────────────────────────────
+            //
+
+                export function abs ( args: jsep.interfaces.baseNode[ ] ) {
+                    return `\\left|${ compiler.generate( args[ 0 ] ) }\\right|`
                 }
 
             // ─────────────────────────────────────────────────────────────────
