@@ -3,3 +3,8 @@ src/**
 .gitignore
 LICENSE.txt
 tsconfig.json
+bin/github-full-horse.png
+bin/index.html
+bin/jsep.min.js
+bin/katex.min.css
+bin/katex.min.js
