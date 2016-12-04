@@ -23,7 +23,7 @@ namespace numeraX {
                     if ( match === '=' )
                         return '=='
                     if ( match === '\n' )
-                        return ' '   
+                        return ' '
                 });
 
                 // getting the ast
