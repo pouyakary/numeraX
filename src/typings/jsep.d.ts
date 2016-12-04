@@ -12,7 +12,7 @@
 // ─── MAIN FUNCTIONS ─────────────────────────────────────────────────────────────
 //
 
-    declare function jsep ( code: string ): jsep.interfaces.baseNode
+    declare function jsep ( code: string ): jsep.interfaces.baseNode;
 
     declare module jsep {
         /**
@@ -107,6 +107,14 @@
             export interface callExpressionNode extends baseNode {
                 callee: identiferNode
                 arguments: baseNode[ ]
+            }
+
+        //
+        // ─── ARRAY EXPRESSION ────────────────────────────────────────────
+        //
+
+            export interface arrayExpressionNode extends baseNode {
+                elements: baseNode[ ]
             }
 
         // ─────────────────────────────────────────────────────────────────
