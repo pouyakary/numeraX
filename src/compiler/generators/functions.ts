@@ -29,7 +29,7 @@ namespace numeraX.compiler.generators {
 
                 case 'integral':
                 case 'int':
-                    return safeGen( 3, node, stdlib.integral )
+                    return stdlib.integral( node )
 
                 default:
                     return generateUnknownFunction( node )
@@ -52,7 +52,7 @@ namespace numeraX.compiler.generators {
     // ─── GENERATOR WITH ARG NUMBERS ─────────────────────────────────────────────────
     //
 
-        function safeGen ( argc: number, 
+        function safeGen ( argc: number,
                            node: jsep.interfaces.callExpressionNode,
                            func: ( args: jsep.interfaces.baseNode[ ] ) => string ) {
             if ( node.arguments.length === argc )
@@ -88,8 +88,35 @@ namespace numeraX.compiler.generators {
             // ─── INTEGRAL ────────────────────────────────────────────────────
             //
 
-                export function integral ( args: jsep.interfaces.baseNode[ ] ) {
-                    return generate3PartFunctions( 'int', args )
+                export function integral ( node: jsep.interfaces.callExpressionNode ) {
+                    if ( node.arguments.length > 3 )
+                        return generateUnknownFunction( node )
+
+                    // just int "something" d "x"
+                    if ( node.arguments.length === 2 ) {
+                        if ( node.arguments[ 1 ].type !== 'Identifier' )
+                            return generateUnknownFunction( node )
+                        return `\\int ${
+                            compiler.generate( node.arguments[ 1 ] )
+                        }\\ ${
+                            compiler.generate( node.arguments[ 1 ] )
+                        }`
+                    }
+
+                    // int "something" from "a" to "z" d "x"
+                    if ( node.arguments[ 1 ].type !== 'Identifier' ||
+                         ( node.arguments[ 2 ] as jsep.interfaces.arrayExpressionNode ).elements.length !== 2 )
+                            return generateUnknownFunction( node )
+
+                    return `\\int_{${
+                        compiler.generate( ( <jsep.interfaces.arrayExpressionNode> node.arguments[ 2 ] ).elements[ 0 ] )
+                    }}^{${
+                        compiler.generate( ( <jsep.interfaces.arrayExpressionNode> node.arguments[ 2 ] ).elements[ 1 ] )
+                    }}${
+                        compiler.generate( node.arguments[ 0 ] )
+                    }\\ ${
+                        compiler.generate( node.arguments[ 1 ] )
+                    }`
                 }
 
             //
