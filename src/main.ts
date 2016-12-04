@@ -16,7 +16,7 @@ namespace numeraX {
 
         // Compiles a simple math expression into TeX mathematical expression natation.
         export function compile ( code: string ): string {
-            parser.setupJSEP( );
+            parser.setupJSEP( )
 
             try {
                 let normalizedCode = code.replace( /=(?!=)|\n/g, match => {
@@ -24,16 +24,17 @@ namespace numeraX {
                         return '=='
                     if ( match === '\n' )
                         return ' '
-                });
+                    return ''
+                })
 
                 // getting the ast
-                let ast = jsep( normalizedCode );
+                let ast = jsep( normalizedCode )
 
                 // compiling the ast into TeX
-                return compiler.generate( ast );
+                return compiler.generate( ast )
 
             } catch ( error ) {
-                return "";
+                return ''
             }
         }
 

@@ -17,23 +17,30 @@ namespace numeraX.compiler {
         export function generate ( node: jsep.interfaces.baseNode ): string {
             switch ( node.type ) {
                 case 'Literal':
-                    return generators.compileLiteralNode( <jsep.interfaces.literalNode> node )
+                    return generators.compileLiteralNode( 
+                        node as jsep.interfaces.literalNode )
 
                 case 'Identifier':
-                    return generators.compileIdentifierNode( <jsep.interfaces.identiferNode> node )
+                    return generators.compileIdentifierNode( 
+                        node as jsep.interfaces.identiferNode )
 
                 case 'BinaryExpression':
-                    return generators.compileBinaryExpressionNode( <jsep.interfaces.binaryExpressionNode> node )
+                    return generators.compileBinaryExpressionNode( 
+                        node as jsep.interfaces.binaryExpressionNode )
 
                 case 'UnaryExpression':
-                    return generators.compileUnaryExpressionNode( <jsep.interfaces.unaryExpressionNode> node )
+                    return generators.compileUnaryExpressionNode( 
+                        node as jsep.interfaces.unaryExpressionNode )
 
                 case 'CallExpression':
-                    return generators.compileCallExpressionNode( <jsep.interfaces.callExpressionNode> node )
+                    return generators.compileCallExpressionNode( 
+                        node as jsep.interfaces.callExpressionNode )
 
                 case 'ArrayExpression':
-                    return generators.compileArrayExpressionNode( <jsep.interfaces.arrayExpressionNode> node )
+                    return generators.compileArrayExpressionNode( 
+                        node as jsep.interfaces.arrayExpressionNode )
             }
+            return ''
         }
 
     // ────────────────────────────────────────────────────────────────────────────────

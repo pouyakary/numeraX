@@ -14,9 +14,11 @@ namespace numeraX.compiler.generators {
     // ─── MAIN ───────────────────────────────────────────────────────────────────────
     //
 
-        export function compileUnaryExpressionNode ( node: jsep.interfaces.unaryExpressionNode ) {
+        export function compileUnaryExpressionNode ( node: jsep.interfaces.unaryExpressionNode ): string {
             if ( node.prefix )
                 return `${ node.operator }{${ compiler.generate( node.argument ) }}`
+            else
+                return compiler.generate( node.argument )
         }
 
     // ────────────────────────────────────────────────────────────────────────────────
