@@ -1,6 +1,6 @@
 {
   "name": "numerax",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple math notation to TeX math notation compiler.",
   "main": "bin/numerax.js",
   "scripts": {
