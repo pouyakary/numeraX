@@ -27,6 +27,9 @@ namespace numeraX {
                     return ''
                 })
 
+                // the ------ grammar:
+                normalizedCode = normalizedCode.replace( /---+/g, '/' );
+
                 // getting the ast
                 let ast = jsep( normalizedCode )
 
